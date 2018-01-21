@@ -1,5 +1,5 @@
 package BadLibsCore
 
-object BadLibsMasher {
+object BadLibsEngine {
 
 }
