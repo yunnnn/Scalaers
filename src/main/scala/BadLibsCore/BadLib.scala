@@ -1,0 +1,5 @@
+package BadLibsCore
+
+class BadLib {
+
+}
