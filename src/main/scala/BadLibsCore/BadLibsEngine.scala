@@ -1,0 +1,5 @@
+package BadLibsCore
+
+object BadLibsMasher {
+
+}
