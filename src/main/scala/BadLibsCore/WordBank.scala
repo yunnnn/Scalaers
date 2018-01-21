@@ -1,5 +1,0 @@
-package BadLibsCore
-
-object WordBank {
-
-}

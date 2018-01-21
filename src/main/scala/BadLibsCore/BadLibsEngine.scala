@@ -1,5 +1,4 @@
 package BadLibsCore
 
 object BadLibsEngine {
-
 }
