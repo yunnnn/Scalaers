@@ -10,4 +10,7 @@ object BadLibsMasher {
 object BadLibsEngine {
 >>>>>>> 3879dfd... Engine rename
 
+
+
+  WordBankTools.WordBank
 }
