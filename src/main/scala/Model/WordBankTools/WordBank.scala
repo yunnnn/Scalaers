@@ -1,6 +1,6 @@
-package BadLibsCore.WordBankTools
+package Model.WordBankTools
 
-import BadLibsCore.WordBankTools.GrammarTypeEnum.{GrammarTypeEnum}
+import Model.WordBankTools.GrammarTypeEnum.{GrammarTypeEnum}
 
 import scala.collection.mutable
 import scala.util.Random
@@ -10,9 +10,9 @@ object WordBank {
     val wordBank = mutable.HashMap[GrammarTypeEnum, List[String]]()
 
     //Some hardcoded values
-    wordBank += (GrammarTypeEnum.NOUN -> List("Krispy Kreme Donut", "Barfs", "Derpio"))
-    wordBank += (GrammarTypeEnum.VERB -> List("Dreamed", "Slayed", "Barfed"))
-    wordBank += (GrammarTypeEnum.ADJECTIVE -> List("Dreaded", "Typical", "Forlorn"))
+    wordBank += (GrammarTypeEnum.NOUN -> List("Krispy Kreme Donut", "barf", "Derpio"))
+    wordBank += (GrammarTypeEnum.VERB -> List("dream", "slay", "barf"))
+    wordBank += (GrammarTypeEnum.ADJECTIVE -> List("dreaded", "typical", "forlorn"))
     wordBank += (GrammarTypeEnum.NUMBER -> List("1", "500", "-5213", "6969"))
 
     wordBank

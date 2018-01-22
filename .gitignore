@@ -4,3 +4,4 @@ target/*
 Scalaers.iml
 *.log
 *.class
+.DS_Store
