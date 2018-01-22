@@ -2,6 +2,7 @@ package BadLibsCore
 
 import BadLibsCore.WordBankTools.GrammarTypeEnum
 import Model.{Lib, Word}
+
 import org.scalatest.FunSuite
 
 class FileParserTest extends FunSuite {
@@ -22,5 +23,6 @@ class FileParserTest extends FunSuite {
     val createdToken = FileParser.createToken("{NOUN}")
     assert(testToken.grammarType equals createdToken.asInstanceOf[Lib].grammarType)
   }
+
 
 }

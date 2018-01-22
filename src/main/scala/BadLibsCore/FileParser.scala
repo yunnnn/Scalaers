@@ -31,4 +31,5 @@ object FileParser {
       case _ => new Word(token)
     }
   }
+
 }
