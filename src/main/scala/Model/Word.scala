@@ -1,5 +1,5 @@
 package Model
 
-class Word(word: String) extends SentenceToken {
+class Word(val wordString: String) extends SentenceToken {
 
 }

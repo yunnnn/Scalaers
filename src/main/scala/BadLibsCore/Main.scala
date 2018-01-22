@@ -1,14 +1,14 @@
 package BadLibsCore
 
-import BadLibsCore.WordBankTools.{GrammarType, WordBank}
+import BadLibsCore.WordBankTools.{GrammarTypeEnum, WordBank}
 
 object Main {
   def main(args: Array[String]): Unit = {
 
     //prints em all
-    WordBank.getAllFromType(GrammarType.Adjective).foreach(word => println(word))
+    WordBank.getAllFromType(GrammarTypeEnum.ADJECTIVE).foreach(word => println(word))
 
     //prints a random one
-    println("Random word:" + WordBank.getFromTypeRandomly(GrammarType.Adjective))
+    println("Random word:" + WordBank.getFromTypeRandomly(GrammarTypeEnum.ADJECTIVE))
   }
 }

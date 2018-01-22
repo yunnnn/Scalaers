@@ -1,7 +1,7 @@
 package Model
 
-import BadLibsCore.WordBankTools.GrammarType.GrammarType
+import BadLibsCore.WordBankTools.GrammarTypeEnum.{GrammarTypeEnum}
 
-class Lib(kind: GrammarType) extends SentenceToken {
+class Lib(val grammarType: GrammarTypeEnum) extends SentenceToken {
 
 }

@@ -1,5 +1,5 @@
 package Model
 
-class BadLibStory(sentences: List[SentenceTemplate]) {
+class BadLibStory(val sentenceTemplates: List[SentenceTemplate]) {
 
 }

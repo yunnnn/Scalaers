@@ -1,5 +1,5 @@
 package Model
 
-class SentenceTemplate(words: List[SentenceToken]) {
+class SentenceTemplate(val sentenceTokens: List[SentenceToken]) {
 
 }

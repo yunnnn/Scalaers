@@ -2,5 +2,4 @@ package Model
 
 class SentenceToken {
 
-
 }
