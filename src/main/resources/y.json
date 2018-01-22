@@ -1,0 +1,15 @@
+{
+  "args": {},
+  "headers": {
+    "host": "postman-echo.com",
+    "accept": "*/*",
+    "accept-encoding": "gzip, deflate",
+    "cache-control": "no-cache",
+    "cookie": "sails.sid=s%3Agda4PzbWtDoR09T-Iz-7rc9SYZ4k9EZY.BYyg46FJmXVPDhYwk4NME%2Be7B3ZfmshN3yf0I36qQW8",
+    "postman-token": "e2590746-9275-481c-94c1-e2d3e0a9c7b6",
+    "user-agent": "PostmanRuntime/7.1.1",
+    "x-forwarded-port": "80",
+    "x-forwarded-proto": "http"
+  },
+  "url": "http://postman-echo.com/get"
+}
