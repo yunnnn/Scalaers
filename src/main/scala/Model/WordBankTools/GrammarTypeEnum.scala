@@ -1,4 +1,4 @@
-package BadLibsCore.WordBankTools
+package Model.WordBankTools
 
 object GrammarTypeEnum extends Enumeration {
   type GrammarTypeEnum = Value

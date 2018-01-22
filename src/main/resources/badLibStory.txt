@@ -1,0 +1,3 @@
+A {NOUN} is good and {ADJ}.
+The {ADJ}, {ADJ} {NOUN} likes to {VERB}.
+Don't {VERB} on that {NOUN}, instead {VERB} on it instead.
