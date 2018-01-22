@@ -1,5 +1,0 @@
-package BadLibsCore
-
-class BadLib {
-
-}
