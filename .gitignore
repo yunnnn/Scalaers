@@ -5,3 +5,7 @@ Scalaers.iml
 *.log
 *.class
 .DS_Store
+consumerKey.txt
+consumerSecret.txt
+accessToken.txt
+accessSecret.txt

@@ -1,6 +1,4 @@
 package RestAPI
-import java.io.FileInputStream
-
 import play.api.libs.json.{JsValue, Json, __}
 import scala.io.{BufferedSource, Source}
 
