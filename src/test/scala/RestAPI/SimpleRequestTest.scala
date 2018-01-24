@@ -1,14 +1,19 @@
 package RestAPI
 
 import org.scalatest.FunSuite
-import play.api.libs.json
 
 class SimpleRequestTest extends FunSuite {
 
   test("testGetRequest") {
-    val testData = SimpleRequest.getRequest("http://postman-echo.com/get ")
-    val word = (testData \ "headers" \ "host").get
+    val testData = SimpleRequest.getRequest("http://api.datamuse.com/words?sp=sly&md=p&max=1")
+    val word = (testData \ 0 \ "tags").get.head.get
     println(word)
+  }
+
+  test("testWriteQuery") {
+    val query = SimpleRequest.writeQuery("sleep")
+    val testData = SimpleRequest.getRequest(query)
+    println( (testData \ 0 \ "tags").get.head.get)
   }
 
   test("testReadJSON") {

@@ -12,6 +12,10 @@ object SimpleRequest extends App {
     json
   }
 
+  def writeQuery(wordNeedingPartOfSpeech: String): String = {
+    "http://api.datamuse.com/words?sp=" +  wordNeedingPartOfSpeech + "&md=p&max=1"
+  }
+
   def readJSON(filename: String): JsValue = {
 
     val file: BufferedSource = Source.fromResource(filename)
