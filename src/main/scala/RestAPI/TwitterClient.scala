@@ -23,8 +23,12 @@ object TwitterClient {
   val twitter: Twitter = twitterFactory.getInstance()
 
 
+  /**
+    * GetTrumpTweets
+    * Retrieves the last 20 tweets by Donald trump and puts them into a list of strings
+    * @return tweets
+    */
   def getTrumpTweets: List[String] = {
-    println("Trump Tweets")
     val tweetList: util.Iterator[Status] = twitter.getUserTimeline("@realDonaldTrump").iterator()
 
     val textTweets = new ListBuffer[String]()
@@ -32,16 +36,33 @@ object TwitterClient {
     textTweets.toList
   }
 
+  /**
+    * CleanUpTrumpTweet
+    * removes any links from tweet and converts it into a list of individual words
+    * @param tweet
+    * @return
+    */
   def cleanUpTrumpTweet(tweet: String): List[String] = {
     val words = tweet.split(" ").toList
     words.filter(!_.contains("https://"))
   }
 
-  def getRandomTweet: String = {
+  /**
+    * GetRandomTrumpTweet
+    * Grabs a tweet randomly from the last 20 Trump tweets and returns a string
+    * @return
+    */
+  def getRandomTrumpTweet: String = {
   val tweets = getTrumpTweets
     tweets(Random.nextInt(tweets.length))
   }
 
+  /**
+    * GetRandomTweetWord
+    * takes a string of tweets, filters it to remove any hotlinks, and grabs a random word
+    * @param tweet
+    * @return
+    */
   def getRandomTweetWord(tweet: String): String = {
     val randomTweetWords: List[String] = cleanUpTrumpTweet(tweet)
     val randomTweetWord = randomTweetWords(Random.nextInt(randomTweetWords.length))

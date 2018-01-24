@@ -1,5 +1,6 @@
-A {NOUN} is good and {ADJ}.
+The {NOUN} {VERB} {ADJ}, {ADJ} {NOUN}!
+Fearing the {ADJ} {NOUN}, {NOUN} {VERB} the {ADJ} {NOUN}
+His {NOUN} is good and {ADJ}.
 The {ADJ}, {ADJ} {NOUN} likes to {VERB}.
 Don't {VERB} on that {NOUN}, instead {VERB} on it instead.
 
-{PREP} {NOUN} {VERB} {PREP} {ADJ} {NOUN}

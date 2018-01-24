@@ -2,6 +2,7 @@ package BadLibsCore
 
 object Main {
   def main(args: Array[String]): Unit = {
-    BadLibsEngine.createBadLibStoryAndPrint()
+//    BadLibsEngine.createBadLibStoryAndPrint()
+    Menu.displayMenu()
   }
 }

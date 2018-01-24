@@ -12,5 +12,10 @@ class TwitterClientTest extends FunSuite {
 
   test("test mashup") {
     BadLibsEngine.createBadLibStoryFromTrumpAndPrint()
+//    BadLibsEngine.createBadLibStoryFromTrumpAndPrint()
+//    BadLibsEngine.createBadLibStoryFromTrumpAndPrint()
+//    BadLibsEngine.createBadLibStoryFromTrumpAndPrint()
+//    BadLibsEngine.createBadLibStoryFromTrumpAndPrint()
+
   }
 }

@@ -1,7 +1,7 @@
 package BadLibsCore
 
 import Model.BadLibStory
-import Model.WordBankTools.{GrammarTypeEnum, WordBank}
+import Model.WordBankTools.WordBank
 import RestAPI.{SimpleRequest, TwitterClient}
 
 import scala.io.{BufferedSource, Source}
@@ -18,21 +18,41 @@ object BadLibsEngine {
   }
 
   def createBadLibStoryFromTrumpAndPrint(): Unit = {
-    //Retrieve random tweet and pick random word from tweet to add to wordbank
-    val tweet = TwitterClient.getRandomTweet
-    println(tweet)
-    val randomTweetWord = TwitterClient.getRandomTweetWord(tweet)
-    println(randomTweetWord)
-    //Send get request with random word to find out part of word
-    val request = SimpleRequest.getRequest(SimpleRequest.writeQuery(randomTweetWord))
-    val partOfWord = (request \ 0 \ "tags").get.head.get
-    println(randomTweetWord + " : " + partOfWord)
-    //Add word to word bank
-    WordBank addWordToWordBank(partOfWord.toString(), randomTweetWord)
+    for (i <- 1 to 50) {
+      getRandomWordAndAddToBank()
+    }
+
     println()
+    println()
+    println("Results! " )
+    println()
+
     //Print story
     BadLibsEngine.createBadLibStoryAndPrint()
 
+    println()
+    println()
+    println("Map! " )
+    println()
+
+    //TODO: Print out the new set of words in wordbank
+
+  }
+
+  def getRandomWordAndAddToBank() = {
+    //Retrieve random tweet and pick random word from tweet to add to wordbank
+    val tweet = TwitterClient.getRandomTrumpTweet
+    val randomTweetWord = TwitterClient.getRandomTweetWord(tweet)
+
+    //Send get request with random word to find out part of word
+    val request = SimpleRequest.getRequest(SimpleRequest.writeDictionaryQuery(randomTweetWord))
+    val tags = request \ 0 \ "tags"
+    if (request != null && tags != null && !tags.isEmpty && tags.get != null && tags.get.head != null && !tags.get.head.isEmpty) {
+      val partOfWord = tags.get.head.get
+      println(randomTweetWord + " : " + partOfWord)
+      //Add word to word bank
+      WordBank addWordToWordBank(partOfWord.toString(), randomTweetWord)
+    }
   }
 
 }

@@ -11,7 +11,7 @@ class SimpleRequestTest extends FunSuite {
   }
 
   test("testWriteQuery") {
-    val query = SimpleRequest.writeQuery("sleep")
+    val query = SimpleRequest.writeDictionaryQuery("sleep")
     val testData = SimpleRequest.getRequest(query)
     println( (testData \ 0 \ "tags").get.head.get)
   }
