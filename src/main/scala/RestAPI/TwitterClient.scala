@@ -1,6 +1,7 @@
 package RestAPI
 
 import java.util
+import java.util.{Calendar}
 
 import twitter4j.{Status, Twitter, TwitterFactory}
 import twitter4j.conf.ConfigurationBuilder
@@ -36,6 +37,14 @@ object TwitterClient {
     textTweets.toList
   }
 
+  def getTrumpTweetTime: Calendar = {
+    val tweetList: util.Iterator[Status] = twitter.getUserTimeline("@realDonaldTrump").iterator()
+    val calendar = Calendar.getInstance()
+    val rawDate = tweetList.next().getCreatedAt
+    calendar.setTime(rawDate)
+    calendar
+  }
+
   /**
     * CleanUpTrumpTweet
     * removes any links from tweet and converts it into a list of individual words
@@ -45,6 +54,16 @@ object TwitterClient {
   def cleanUpTrumpTweet(tweet: String): List[String] = {
     val words = tweet.split(" ").toList
     words.filter(!_.contains("https://"))
+  }
+
+  def cleanUpAllTrumpTweets(tweets: List[String]): List[String] = {
+    var listBuffer = new ListBuffer[String]
+    for (tweet <- tweets) {
+      val tweetWords = cleanUpTrumpTweet(tweet)
+      val cleanedUpTweet = tweetWords.mkString(" ")
+      listBuffer += cleanedUpTweet
+    }
+    listBuffer.toList
   }
 
   /**
@@ -69,10 +88,13 @@ object TwitterClient {
     randomTweetWord
     }
 
+  def parseDateFromString(dateString: String): Calendar = {
+    val date = Calendar.getInstance()
+    date.setTimeInMillis(dateString.toLong)
+    date
+  }
+}
 
-
-
-//
 //  def getTwitterJSON(query: String): JsValue = {
 //    val twitterFactory = new TwitterFactory(configurationBuilder.build())
 //    val twitter = twitterFactory.getInstance()
@@ -82,6 +104,3 @@ object TwitterClient {
 //      println(tweet)
 //    }
 //  }
-
-
-}
