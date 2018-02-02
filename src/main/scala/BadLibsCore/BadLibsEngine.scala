@@ -2,7 +2,7 @@ package BadLibsCore
 
 import Model.BadLibStory
 import Model.WordBankTools.WordBank
-import RestAPI.{SimpleRequest, TwitterClient}
+import RestAPI.{SimpleRequest, TwitterCache, TwitterClient}
 
 import scala.io.{BufferedSource, Source}
 
@@ -18,7 +18,7 @@ object BadLibsEngine {
   }
 
   def createBadLibStoryFromTrumpAndPrint(): Unit = {
-    for (i <- 1 to 50) {
+    for (i <- 1 to 25) {
       getRandomWordAndAddToBank()
     }
 
@@ -39,20 +39,31 @@ object BadLibsEngine {
 
   }
 
+
+
   def getRandomWordAndAddToBank() = {
     //Retrieve random tweet and pick random word from tweet to add to wordbank
-    val tweet = TwitterClient.getRandomTrumpTweet
-    val randomTweetWord = TwitterClient.getRandomTweetWord(tweet)
 
-    //Send get request with random word to find out part of word
-    val request = SimpleRequest.getRequest(SimpleRequest.writeDictionaryQuery(randomTweetWord))
+    if (TwitterCache.isTimeToReloadCache(TwitterCache.readTimeFromCache)){
+      val tweet = TwitterClient.getRandomTrumpTweet
+      val randomTweetWord = TwitterClient.getRandomTweetWord(tweet)
+      getPartOfWordAndAddToWordBank(randomTweetWord)
+    } else {
+      val tweet = TwitterCache.getRandomTrumpTweetFromCache
+      val randomTweetWord = TwitterClient.getRandomTweetWord(tweet)
+      getPartOfWordAndAddToWordBank(randomTweetWord)
+    }
+
+  }
+
+  def getPartOfWordAndAddToWordBank(word: String): Unit = {
+    val request = SimpleRequest.getRequest(SimpleRequest.writeDictionaryQuery(word))
     val tags = request \ 0 \ "tags"
     if (request != null && tags != null && !tags.isEmpty && tags.get != null && tags.get.head != null && !tags.get.head.isEmpty) {
       val partOfWord = tags.get.head.get
-      println(randomTweetWord + " : " + partOfWord)
+      println(word + " : " + partOfWord)
       //Add word to word bank
-      WordBank addWordToWordBank(partOfWord.toString(), randomTweetWord)
+      WordBank addWordToWordBank(partOfWord.toString(), word)
     }
   }
-
 }

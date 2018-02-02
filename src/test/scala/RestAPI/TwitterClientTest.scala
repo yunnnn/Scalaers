@@ -33,28 +33,28 @@ class TwitterClientTest extends FunSuite {
   test("checkTime") {
     val time: Calendar = Calendar.getInstance()
     time.set(2018, 0, 24, 15, 38)
-    assert(TwitterClient.isTimeToReloadCache(time) == true)
+    assert(TwitterCache.isTimeToReloadCache(time) == true)
   }
 
   test("writeTweetsIntoCache") {
-    TwitterClient.writeTweetsIntoCache(TwitterClient.getTrumpTweets, Calendar.getInstance())
+    TwitterCache.writeTweetsIntoCache(TwitterClient.getTrumpTweets, Calendar.getInstance())
   }
 
   test("readTimeFromCache") {
-    val time = TwitterClient.readTimeFromCache
+    val time = TwitterCache.readTimeFromCache
     println(time)
   }
 
   test("getTweetsFromCache") {
-    val tweets = TwitterClient.getTweetsFromCache
+    val tweets = TwitterCache.getTweetsFromCache
     val cleanedTweets = TwitterClient.cleanUpAllTrumpTweets(tweets)
     cleanedTweets.foreach(println(_))
 
   }
 
   test("CacheMashUp") {
-    if (TwitterClient.isTimeToReloadCache(TwitterClient.readTimeFromCache))
-      TwitterClient.getTrumpTweets else TwitterClient.getTweetsFromCache
+    if (TwitterCache.isTimeToReloadCache(TwitterCache.readTimeFromCache))
+      TwitterClient.getTrumpTweets else TwitterCache.getTweetsFromCache
 
   }
 }

@@ -7,13 +7,14 @@ import java.util.concurrent.TimeUnit
 import RestAPI.TwitterClient.parseDateFromString
 
 import scala.io.Source
+import scala.util.Random
 
 object TwitterCache {
 
-  def writeTweetsIntoCache(tweets: List[String], tweetTime: Calendar): Unit = {
+  def writeTweetsIntoCache(tweets: List[String], lastUpdateTime: Calendar): Unit = {
     val fileWriter = new FileWriter("./src/main/resources/tweetCache.txt")
     val bufferedWriter = new BufferedWriter(fileWriter)
-    bufferedWriter.write(tweetTime.getTimeInMillis.toString + "\n")
+    bufferedWriter.write(lastUpdateTime.getTimeInMillis.toString + "\n")
     for (tweet <- tweets) {
       bufferedWriter.write(tweet + "\n")
     }
@@ -42,5 +43,10 @@ object TwitterCache {
   def getTweetsFromCache: List[String] = {
     val linesPlusDate = Source.fromResource("tweetCache.txt").getLines().toList
     linesPlusDate.drop(1)
+  }
+
+  def getRandomTrumpTweetFromCache: String = {
+    val tweets = getTweetsFromCache
+    tweets(Random.nextInt(tweets.length))
   }
 }
